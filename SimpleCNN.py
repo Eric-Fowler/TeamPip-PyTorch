@@ -18,8 +18,8 @@ print(device)
 if device == 'cuda': 
     print(torch.cuda.get_device_name())
 
-data = np.load('/blue/eee4773/eric.fowler/Final-Project/Data/data_train.npy').T
-labels = np.loadtxt('/blue/eee4773/eric.fowler/Final-Project/Data/correct_labels.npy',delimiter=',')
+data = np.load('Data/data_train.npy').T
+labels = np.loadtxt('Data/correct_labels.npy',delimiter=',')
 
 train_data, test_data, train_labels, test_labels = train_test_split(data, labels, test_size=0.2, random_state=42)
 
