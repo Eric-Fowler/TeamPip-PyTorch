@@ -17,7 +17,7 @@ source env/bin/activate
 
 pip install --upgrade pip
 
-pip install numpy tensorflow torch matplotlib scikit-learn
+pip3 install  torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 numpy -f https://download.pytorch.org/whl/torch_stable.html matplotlib scikit-learn --extra-index-url https://download.pytorch.org/whl/cu113
 
 echo 'Creating Requirements File'
 echo ''
@@ -25,8 +25,8 @@ echo ''
 pip freeze > requirements.txt
 
 echo 'Creating Job Script'
-echo ''
-'#!/bin/bash
+echo '
+#!/bin/bash
 
 #SBATCH -p
 #SBATCH gpu

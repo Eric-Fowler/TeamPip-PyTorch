@@ -654,8 +654,9 @@ toml==0.10.0
 tomli==2.0.1
 toolshed @ file:///opt/conda/conda-bld/toolshed_1595734431484/work
 toolz @ file:///home/conda/feedstock_root/build_artifacts/toolz_1600973991856/work
-torch==1.9.0
-torchvision==0.10.0
+torch==1.9.0+cu111
+torchaudio==0.9.0
+torchvision==0.10.0+cu111
 tornado==6.0.4
 tox==3.15.2
 tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1632160078689/work
