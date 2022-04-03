@@ -19,8 +19,6 @@ if device == 'cuda':
     print(torch.cuda.get_device_name())
 
 
-#CUDA_LAUNCH_BLOCKING=1
-
 data_og = np.load('Data/data_train.npy')
 data_og = data_og.T
 labels_og = np.loadtxt('Data/correct_labels.npy',delimiter=',')

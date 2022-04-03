@@ -1,0 +1,67 @@
+GPU Driver '470' detected
+Sun Apr  3 11:24:45 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.82.01    Driver Version: 470.82.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:07:00.0 Off |                    0 |
+| N/A   53C    P0   244W / 400W |   2993MiB / 81251MiB |     95%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-SXM...  On   | 00000000:0F:00.0 Off |                    0 |
+| N/A   40C    P0    87W / 400W |   2182MiB / 81251MiB |     36%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-SXM...  On   | 00000000:47:00.0 Off |                    0 |
+| N/A   40C    P0   115W / 400W |   2182MiB / 81251MiB |     43%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-SXM...  On   | 00000000:4E:00.0 Off |                    0 |
+| N/A   41C    P0   274W / 400W |   2122MiB / 81251MiB |     42%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   4  NVIDIA A100-SXM...  On   | 00000000:87:00.0 Off |                    0 |
+| N/A   43C    P0    59W / 400W |     85MiB / 81251MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   5  NVIDIA A100-SXM...  On   | 00000000:90:00.0 Off |                    0 |
+| N/A   38C    P0    59W / 400W |     71MiB / 81251MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   6  NVIDIA A100-SXM...  On   | 00000000:B7:00.0 Off |                    0 |
+| N/A   37C    P0    61W / 400W |      3MiB / 81251MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   7  NVIDIA A100-SXM...  On   | 00000000:BD:00.0 Off |                    0 |
+| N/A   47C    P0   185W / 400W |   1134MiB / 81251MiB |    100%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A     20374      C   ...6_64-verbs-smp-CUDA/namd2      871MiB |
+|    0   N/A  N/A    189593      C   ./fargo3d                        2119MiB |
+|    1   N/A  N/A    189594      C   ./fargo3d                        2179MiB |
+|    2   N/A  N/A    189595      C   ./fargo3d                        2179MiB |
+|    3   N/A  N/A    189596      C   ./fargo3d                        2119MiB |
+|    7   N/A  N/A     55265      C   ./encoreAVX                       415MiB |
++-----------------------------------------------------------------------------+
+cuda
+/home/eric.fowler/.local/lib/python3.8/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+torch.Size([20, 1, 300, 300])
+torch.Size([20])
+Traceback (most recent call last):
+  File "SimpleCNN.py", line 139, in <module>
+    loss.backward()
+  File "/home/eric.fowler/.local/lib/python3.8/site-packages/torch/_tensor.py", line 255, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/eric.fowler/.local/lib/python3.8/site-packages/torch/autograd/__init__.py", line 147, in backward
+    Variable._execution_engine.run_backward(
+RuntimeError: Function AddmmBackward returned an invalid gradient at index 1 - got [20, 4096] but expected shape compatible with [20, 350464]
