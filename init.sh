@@ -44,8 +44,7 @@ source env/bin/activate
 
 nvidia-smi
 
-python SimpleCNN.py $TIME
-'
+python SimpleCNN.py $TIME'>job.slurm
 echo 'Creating Launch Script'
 echo ''
 
