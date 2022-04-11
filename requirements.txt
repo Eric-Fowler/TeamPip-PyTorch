@@ -12,9 +12,12 @@ alabaster==0.7.12
 amqp==2.5.2
 anndata @ file:///home/conda/feedstock_root/build_artifacts/anndata_1618520051705/work
 ANNOgesic==1.0.15
+anyio==3.5.0
 appdirs==1.4.3
 argcomplete==1.11.1
 argh==0.26.2
+argon2-cffi==21.3.0
+argon2-cffi-bindings==21.2.0
 arrow==0.15.5
 arviz @ file:///home/conda/feedstock_root/build_artifacts/arviz_1618947141331/work
 ase==3.19.0
@@ -33,6 +36,7 @@ atomman==1.4.3
 attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1620387926260/work
 audioread==2.1.8
 auto-sklearn @ file:///home/conda/feedstock_root/build_artifacts/auto-sklearn_1626857396589/work
+autobahn==22.3.2
 autogenes @ file:///opt/conda/conda-bld/autogenes_1632317108440/work
 autograd==1.3
 autograd-gamma==0.4.2
@@ -145,6 +149,7 @@ defusedxml @ file:///home/conda/feedstock_root/build_artifacts/defusedxml_161523
 demographics==0.0.1
 DendroPy==4.4.0
 Deprecated @ file:///home/conda/feedstock_root/build_artifacts/deprecated_1632758190537/work
+deprecation==2.1.0
 descartes==1.1.0
 diff-cover==3.0.1
 dill @ file:///home/conda/feedstock_root/build_artifacts/dill_1623610058511/work
@@ -177,6 +182,7 @@ face-recognition-models==0.3.0
 FALCONN==1.3.1
 fastcluster==1.1.26
 fastcsv==0.1.3
+fastjsonschema==2.15.3
 fastprogress @ file:///home/conda/feedstock_root/build_artifacts/fastprogress_1597932925331/work
 fbpca==1.0
 filelock @ file:///home/conda/feedstock_root/build_artifacts/filelock_1589994591731/work
@@ -246,6 +252,7 @@ huggingface-hub==0.1.2
 humanfriendly==7.1.1
 humanize==1.0.0
 hurry.filesize==0.9
+hyperlink==21.0.0
 hypothesis==5.5.4
 idigbio==0.8.5
 idna==2.10
@@ -281,11 +288,12 @@ jaxlib @ file:///home/conda/feedstock_root/build_artifacts/jaxlib_1628279506610/
 jdcal==1.4.1
 jedi @ file:///home/conda/feedstock_root/build_artifacts/jedi_1610146791023/work
 jeepney @ file:///home/conda/feedstock_root/build_artifacts/jeepney_1627546597665/work
-Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1621419064915/work
+Jinja2==3.1.1
 jinja2-pluralize==0.3.0
 jmespath @ file:///home/conda/feedstock_root/build_artifacts/jmespath_1589369830981/work
 joblib @ file:///home/conda/feedstock_root/build_artifacts/joblib_1612898609989/work
 JSAnimation==0.1
+json5==0.9.6
 jsonnet==0.16.0
 jsonpickle @ file:///home/conda/feedstock_root/build_artifacts/jsonpickle_1618250231429/work
 jsonschema @ file:///home/conda/feedstock_root/build_artifacts/jsonschema_1614815863336/work
@@ -293,6 +301,13 @@ jupyter==1.0.0
 jupyter-client @ file:///home/conda/feedstock_root/build_artifacts/jupyter_client_1615693636836/work
 jupyter-console==6.1.0
 jupyter-core @ file:///home/conda/feedstock_root/build_artifacts/jupyter_core_1612125275706/work
+jupyter-packaging==0.12.0
+jupyter-server==1.16.0
+jupyter-server-proxy==3.2.1
+jupyterlab==3.3.2
+jupyterlab-pygments==0.1.2
+jupyterlab-server==2.12.0
+jupyterlab-vpython==3.1.3
 jupyterlab-widgets @ file:///home/conda/feedstock_root/build_artifacts/jupyterlab_widgets_1609173350931/work
 keras==2.8.0
 Keras-Applications==1.0.8
@@ -367,8 +382,10 @@ nanoget==1.12.0
 nanomath==0.23.1
 NanoStat==1.2.0
 natsort @ file:///home/conda/feedstock_root/build_artifacts/natsort_1611580267114/work
-nbconvert==5.6.1
-nbformat @ file:///home/conda/feedstock_root/build_artifacts/nbformat_1617383142101/work
+nbclassic==0.3.7
+nbclient==0.5.13
+nbconvert==6.4.5
+nbformat==5.3.0
 ncbi-genome-download==0.3.0
 nd2reader==3.2.3
 neovim==0.3.1
@@ -385,6 +402,7 @@ nipype==1.4.2
 nltk @ file:///tmp/build/80754af9/nltk_1592496090529/work
 nose==1.3.7
 notebook==6.0.3
+notebook-shim==0.1.0
 num2words==0.5.10
 numba @ file:///home/conda/feedstock_root/build_artifacts/numba_1623568544775/work
 numericalunits==1.25
@@ -495,6 +513,7 @@ pycontractions==2.0.1
 pycos==4.8.15
 pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1593275161868/work
 pycrypto==2.6.1
+pyDOE==0.3.8
 pydot @ file:///home/conda/feedstock_root/build_artifacts/pydot_1613571139672/work
 pydotplus==2.0.2
 pyemd==0.5.1
@@ -600,6 +619,7 @@ shellescape==3.4.1
 shiboken2==5.14.1
 shortuuid @ file:///home/conda/feedstock_root/build_artifacts/shortuuid_1610439219845/work
 shutilwhich==1.1.0
+simpervisor==0.4
 simplejson==3.17.0
 six @ file:///home/conda/feedstock_root/build_artifacts/six_1590081179328/work
 sklearn==0.0
@@ -609,6 +629,7 @@ smac @ file:///home/conda/feedstock_root/build_artifacts/smac_1617699157202/work
 smart-open @ file:///home/conda/feedstock_root/build_artifacts/smart_open_1630238320325/work
 smmap @ file:///home/conda/feedstock_root/build_artifacts/smmap_1611376390914/work
 snakeviz==2.1.1
+sniffio==1.2.0
 snowballstemmer==2.0.0
 sortedcontainers==2.1.0
 SoundFile==0.10.3.post1
@@ -652,20 +673,22 @@ tifffile @ file:///home/conda/feedstock_root/build_artifacts/tifffile_1616017175
 tokenizers==0.10.3
 toml==0.10.0
 tomli==2.0.1
+tomlkit==0.10.1
 toolshed @ file:///opt/conda/conda-bld/toolshed_1595734431484/work
 toolz @ file:///home/conda/feedstock_root/build_artifacts/toolz_1600973991856/work
 torch==1.9.0+cu111
 torchaudio==0.9.0
 torchvision==0.10.0+cu111
-tornado==6.0.4
+tornado==6.1
 tox==3.15.2
 tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1632160078689/work
 trackpy==0.4.2
-traitlets @ file:///home/conda/feedstock_root/build_artifacts/traitlets_1602771532708/work
+traitlets==5.1.1
 traits==6.0.0
 transformers==4.12.5
 twine==3.2.0
 twython==3.7.0
+txaio==22.2.1
 typed-ast==1.4.1
 typing-extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1622748266870/work
 typing-inspect @ file:///home/conda/feedstock_root/build_artifacts/typing_inspect_1623277617575/work
@@ -681,6 +704,7 @@ virtualenv==20.0.25
 virtualenv-clone==0.5.3
 visidata==2.5
 vispy @ file:///home/conda/feedstock_root/build_artifacts/vispy_1606567469995/work
+vpython==7.6.3
 wandb @ file:///home/conda/feedstock_root/build_artifacts/wandb_1631028642201/work
 watchdog @ file:///home/conda/feedstock_root/build_artifacts/watchdog_1605984121137/work
 wcwidth @ file:///home/conda/feedstock_root/build_artifacts/wcwidth_1600965781394/work

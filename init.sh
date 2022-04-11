@@ -17,7 +17,7 @@ source env/bin/activate
 
 pip install --upgrade pip
 
-pip3 install  torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 numpy -f https://download.pytorch.org/whl/torch_stable.html matplotlib scikit-learn --extra-index-url https://download.pytorch.org/whl/cu113
+pip3 install  torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 numpy -f https://download.pytorch.org/whl/torch_stable.html matplotlib scikit-learn opencv-python --extra-index-url https://download.pytorch.org/whl/cu113
 
 echo 'Creating Requirements File'
 echo ''
@@ -33,8 +33,8 @@ echo '
 #SBATCH --gpus=a100:1
 #SBATCH --account=eee4773
 #SBATCH --qos=eee4773
-#SBATCH --mem-per-gpu=10gb
-#SBATCH --time=02:00:00
+#SBATCH --mem-per-gpu=16gb
+#SBATCH --time=10:00:00
 
 module load python
 module load cuda/11.1.0
@@ -44,13 +44,14 @@ source env/bin/activate
 
 nvidia-smi
 
-python SimpleCNN.py $TIME'>job.slurm
+python Script.py $TIME'>job.slurm
 echo 'Creating Launch Script'
 echo ''
 
 echo "#!/bin/bash" > launch.sh
 echo "TIME=\`date +\%s\`" >> launch.sh
 echo "mkdir models/\$TIME" >> launch.sh
+echo "cp Script.py models/$TIME/" >> launch.sh
 echo "sbatch --output=models/\$TIME/log.out --export=TIME=\$TIME job.slurm" >> launch.sh
 
 echo "Initialization Complete"
