@@ -10,22 +10,59 @@ from torch.autograd import Variable
 
 from sklearn.model_selection import train_test_split
 import cv2
+import matplotlib.pyplot as plt
 
 print('modules loaded')
 
 data = np.load('/blue/eee4773/eric.fowler/Final-Project/TeamPip-PyTorch/Data/data_train.npy').T
-X = 1-data[:500]
-y =np.loadtxt('/blue/eee4773/eric.fowler/Final-Project/TeamPip-PyTorch/Data/correct_labels.npy')[:500]
+X_og = data.copy()/255
+y =np.loadtxt('/blue/eee4773/eric.fowler/Final-Project/TeamPip-PyTorch/Data/correct_labels.npy')
 y = y.astype(float).astype(int)
 
 print(np.shape(data))
 print(np.shape(y))
 
+#X = X_og.copy()
+def resize_func(input_data,new_width,new_height):#input the (1,90000) data
+    size1 = np.shape(input_data)[0]
+    size2 = int(size1**(0.5))
+    output = cv2.resize(input_data.reshape(size2,size2),(new_width,new_height))
+    return output
+def morph_ops(input_data):
+    dilate_kernel = np.ones((2,2),np.uint8)
+    open_kernel = np.ones((3,3),np.uint8)
+    closed_kernel = np.ones((3,3),np.uint8)
+    d2_kernel = np.ones((3,3),np.uint8)
+    gradient_kernel = np.ones((3,3),np.uint8)
+    open2_kernel = np.ones((3,3),np.uint8)
+    picture = resize_func(input_data,250,250)
+    dilated_picture = cv2.dilate(picture,dilate_kernel,iterations=4)
+    opened_picture = cv2.morphologyEx(dilated_picture,cv2.MORPH_OPEN,open_kernel)
+    closed_picture = cv2.morphologyEx(opened_picture,cv2.MORPH_CLOSE,closed_kernel)
+    d2_picture = cv2.dilate(closed_picture,d2_kernel,iterations=1)
+    gradient_picture = cv2.morphologyEx(d2_picture,cv2.MORPH_GRADIENT,gradient_kernel)
+    open2_picture = cv2.morphologyEx(gradient_picture,cv2.MORPH_OPEN,open2_kernel)
+    return open2_picture
+
+X_new = np.zeros((np.shape(X_og)[0],300*300))
+print(np.shape(X_og))
+print(np.shape(X_new))
+for ii in range(np.shape(X_new)[0]):
+    newrow = morph_ops(X_og[ii,:])
+    newrow = newrow.reshape(1,-1)
+    newrow = resize_func(newrow[0,:],300,300)
+    newrow = newrow.reshape(1,-1)
+    X_new[ii,:] = newrow
+print(np.shape(X_new))
+#X = X_new
+X =  1-X_og
+
+
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-print(y_test.shape)
 
-BATCH_SIZE = 42
+BATCH_SIZE = 200
 
 torch_X_train = torch.from_numpy(X_train).type(torch.LongTensor)
 torch_y_train = torch.from_numpy(y_train).type(torch.LongTensor) # data type is long
@@ -82,19 +119,18 @@ def fit(model, train_loader):
                 print('Epoch : {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\t Accuracy:{:.3f}%'.format(
                     epoch, batch_idx*len(X_batch), len(train_loader.dataset), 100.*batch_idx / len(train_loader), loss.item(), float(correct*100) / float(BATCH_SIZE*(batch_idx+1))))
                 
-#fit(mlp, train_loader)
+fit(mlp, train_loader)
 
 def evaluate(model):
 #model = mlp
     correct = 0 
     for test_imgs, test_labels in test_loader:
-        #print(test_imgs.shape)
         test_imgs = Variable(test_imgs).float()
         output = model(test_imgs)
         predicted = torch.max(output,1)[1]
         correct += (predicted == test_labels).sum()
     print("Test accuracy:{:.3f}% ".format( float(correct)*100 / (len(test_loader)*BATCH_SIZE)))
-#evaluate(mlp)
+evaluate(mlp)
 
 
 torch_X_train = torch_X_train.view(-1, 1,300,300).float()
@@ -113,9 +149,9 @@ test_loader = torch.utils.data.DataLoader(test, batch_size = BATCH_SIZE, shuffle
 class CNN(nn.Module):
     def __init__(self):
         super(CNN, self).__init__()
-        self.conv1 = nn.Conv2d(1, 32, kernel_size=5)
-        self.conv2 = nn.Conv2d(32, 64, kernel_size=5)
-        self.conv3 = nn.Conv2d(64,128, kernel_size=5)
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3)
+        self.conv3 = nn.Conv2d(64,128, kernel_size=3)
         self.fc1 = nn.Linear(71*71*128,250)
         self.fc2 =nn.Linear(250,10)
 

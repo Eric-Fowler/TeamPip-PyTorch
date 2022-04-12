@@ -5,7 +5,7 @@
 #SBATCH --account=eee4773
 #SBATCH --qos=eee4773
 #SBATCH --mem-per-gpu=16gb
-#SBATCH --time=10:00:00
+#SBATCH --time=00:30:00
 
 module load python
 module load cuda/11.1.0
