@@ -1,0 +1,85 @@
+GPU Driver '470' detected
+Mon Apr 11 14:24:28 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.82.01    Driver Version: 470.82.01    CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  On   | 00000000:07:00.0 Off |                    0 |
+| N/A   47C    P0   234W / 400W |  22461MiB / 81251MiB |    100%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   1  NVIDIA A100-SXM...  On   | 00000000:0F:00.0 Off |                    0 |
+| N/A   46C    P0   341W / 400W |  19960MiB / 81251MiB |    100%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   2  NVIDIA A100-SXM...  On   | 00000000:47:00.0 Off |                    0 |
+| N/A   24C    P0    58W / 400W |     99MiB / 81251MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   3  NVIDIA A100-SXM...  On   | 00000000:4E:00.0 Off |                    0 |
+| N/A   24C    P0    58W / 400W |      3MiB / 81251MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   4  NVIDIA A100-SXM...  On   | 00000000:87:00.0 Off |                    0 |
+| N/A   63C    P0   296W / 400W |   1134MiB / 81251MiB |     97%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   5  NVIDIA A100-SXM...  On   | 00000000:90:00.0 Off |                    0 |
+| N/A   36C    P0   163W / 400W |    948MiB / 81251MiB |     15%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   6  NVIDIA A100-SXM...  On   | 00000000:B7:00.0 Off |                    0 |
+| N/A   54C    P0   288W / 400W |   1146MiB / 81251MiB |     98%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+|   7  NVIDIA A100-SXM...  On   | 00000000:BD:00.0 Off |                    0 |
+| N/A   54C    P0   289W / 400W |   1180MiB / 81251MiB |     98%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A    218204      C   ...6_64-verbs-smp-CUDA/namd2      753MiB |
+|    0   N/A  N/A    234544      C   /opt/conda/bin/python           21705MiB |
+|    1   N/A  N/A    234544      C   /opt/conda/bin/python           19947MiB |
+|    4   N/A  N/A    211116      C   ...6_64-multicore-CUDA/namd3     1131MiB |
+|    5   N/A  N/A     49229      C   ./encoreAVX                       415MiB |
+|    6   N/A  N/A    203219      C   ...6_64-multicore-CUDA/namd3     1131MiB |
+|    7   N/A  N/A    218096      C   ...6_64-multicore-CUDA/namd3     1177MiB |
++-----------------------------------------------------------------------------+
+/home/eric.fowler/.local/lib/python3.8/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+on line 1
+modules loaded
+(6720, 90000)
+(500,)
+(100,)
+Before MLP
+MLP(
+  (linear1): Linear(in_features=90000, out_features=250, bias=True)
+  (linear2): Linear(in_features=250, out_features=100, bias=True)
+  (linear3): Linear(in_features=100, out_features=10, bias=True)
+)
+torch.Size([400, 1, 300, 300])
+torch.Size([100, 1, 300, 300])
+CNN(
+  (conv1): Conv2d(1, 32, kernel_size=(5, 5), stride=(1, 1))
+  (conv2): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
+  (conv3): Conv2d(64, 128, kernel_size=(5, 5), stride=(1, 1))
+  (fc1): Linear(in_features=645248, out_features=250, bias=True)
+  (fc2): Linear(in_features=250, out_features=10, bias=True)
+)
+torch.Size([42, 1, 300, 300])
+torch.Size([42, 10])
+Epoch : 0 [0/400 (0%)]	Loss: 33.216301	 Accuracy:2.381%
+Epoch : 1 [0/400 (0%)]	Loss: 2.293901	 Accuracy:14.286%
+Epoch : 2 [0/400 (0%)]	Loss: 2.292578	 Accuracy:14.286%
+Epoch : 3 [0/400 (0%)]	Loss: 2.293598	 Accuracy:14.286%
+Epoch : 4 [0/400 (0%)]	Loss: 2.252721	 Accuracy:14.286%
+Test accuracy:11.111% 
